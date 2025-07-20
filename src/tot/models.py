@@ -10,10 +10,10 @@ if api_key != "":
 else:
     print("Warning: OPENAI_API_KEY is not set")
     
-api_base = os.getenv("OPENAI_API_BASE", "")
-if api_base != "":
-    print("Warning: OPENAI_API_BASE is set to {}".format(api_base))
-    openai.api_base = api_base
+base_url = os.getenv("OPENAI_BASE_URL", "")
+if base_url != "":
+    print("Warning: OPENAI_BASE_URL is set to {}".format(base_url))
+    openai.base_url = base_url
 
 @backoff.on_exception(backoff.expo, openai.error.OpenAIError)
 def completions_with_backoff(**kwargs):
