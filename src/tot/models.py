@@ -14,6 +14,8 @@ base_url = os.getenv("OPENAI_BASE_URL", "")
 if base_url != "":
     print("Warning: OPENAI_BASE_URL is set to {}".format(base_url))
     openai.base_url = base_url
+else:
+    openai.base_url ="http://localhost:8000/v1"
 
 @backoff.on_exception(backoff.expo, openai.error.OpenAIError)
 def completions_with_backoff(**kwargs):
